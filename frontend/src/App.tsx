@@ -168,31 +168,36 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-bg flex flex-col">
-      <header className="border-b border-border px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-4">
+      <header className="border-b border-border px-4 py-3 flex items-center justify-between gap-2">
+        <div className="flex items-center gap-3 min-w-0">
           <button onClick={() => setNavOpen(true)}
-            className="flex flex-col gap-1 p-2 hover:bg-subtle rounded-lg transition-colors min-h-[44px] min-w-[44px] items-center justify-center">
+            className="flex flex-col gap-1 p-2 hover:bg-subtle rounded-lg transition-colors min-h-[44px] min-w-[44px] items-center justify-center shrink-0">
             <span className="block w-4 h-px bg-text-dim" />
             <span className="block w-4 h-px bg-text-dim" />
             <span className="block w-3 h-px bg-text-dim" />
           </button>
-          <div>
-            <p className="text-sm font-ui text-text leading-none truncate max-w-xs">{book.title}</p>
-            <p className="text-xs text-text-dim mt-0.5">{book.author}</p>
+          <div className="min-w-0 hidden sm:block">
+            <p className="text-sm font-ui text-text leading-none truncate">{book.title}</p>
+            <p className="text-xs text-text-dim mt-0.5 truncate">{book.author}</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 text-xs text-text-dim">
-          <span className="text-accent font-display tabular-nums">{wpm} WPM</span>
-          <span className="hidden sm:block tabular-nums text-muted">{bookPct.toFixed(0)}% of book</span>
+        <div className="flex items-center gap-1 text-xs text-text-dim shrink-0">
+          <span className="text-accent font-display tabular-nums px-2">{wpm} WPM</span>
+          <span className="hidden md:block tabular-nums text-muted px-2">{bookPct.toFixed(0)}%</span>
+
+          {/* Notes — icon only on mobile, icon+label on desktop */}
           <button onClick={() => setNotesOpen(true)}
-            className="px-3 py-2 rounded-lg hover:bg-subtle hover:text-text transition-colors min-h-[44px] flex items-center gap-1.5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-            Notes
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg hover:bg-subtle hover:text-text transition-colors min-h-[44px] min-w-[44px] justify-center">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span className="hidden sm:inline">Notes</span>
           </button>
+
+          {/* Library — icon only on mobile */}
           <button onClick={() => { flushRef.current(); setBook(null); setPhase('landing') }}
-            className="hover:text-text transition-colors px-2 py-1">
-            ← Library
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg hover:bg-subtle hover:text-text transition-colors min-h-[44px] min-w-[44px] justify-center">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15,18 9,12 15,6"/></svg>
+            <span className="hidden sm:inline">Library</span>
           </button>
         </div>
       </header>
