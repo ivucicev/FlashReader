@@ -2,7 +2,11 @@
 
 Speed reader with AI comprehension. Upload a DRM-free `.epub`, read at up to 1200 WPM using RSVP, and verify retention with AI-generated recaps and quizzes.
 
-![Dark minimal UI](https://placehold.co/900x500/0a0a0a/3b82f6?text=FlashReader)
+<p align="center">
+  <img src="screenshots/2.png" width="300" alt="Library with reading stats" />
+  &nbsp;&nbsp;
+  <img src="screenshots/1.png" width="300" alt="RSVP reader view" />
+</p>
 
 ## How it works
 
