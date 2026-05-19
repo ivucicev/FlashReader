@@ -126,8 +126,8 @@ export function Controls({
         </div>
       </div>
 
-      {/* Keyboard hints */}
-      <div className="flex gap-4 text-text-dim text-xs font-display tracking-widest">
+      {/* Keyboard hints — desktop only */}
+      <div className="hidden sm:flex gap-4 text-text-dim text-xs font-display tracking-widest">
         <span><Key>Space</Key> play</span>
         <span><Key>←</Key> back 10</span>
         <span><Key>↑↓</Key> speed</span>
