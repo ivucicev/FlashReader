@@ -7,6 +7,12 @@ services:
       - sqlite_data:/app/data
     environment:
       - DB_PATH=/app/data/flashreader.db
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3001/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
   frontend:
     build: ./frontend
@@ -14,7 +20,8 @@ services:
     ports:
       - "8086:80"
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
 
 volumes:
   sqlite_data:
